@@ -7,6 +7,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
           'Rumah Sakit Umum',
@@ -18,17 +19,97 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.list, color: Colors.black87),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => PatientListScreen()),
-              );
-            },
-          ),
-        ],
+        iconTheme: const IconThemeData(color: Colors.black87),
+      ),
+      drawer: Drawer(
+        backgroundColor: Colors.white,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              color: Colors.teal.shade100,
+              child: UserAccountsDrawerHeader(
+                accountName: const Text(
+                  "Krisnakrnwnn",
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                accountEmail: const Text(
+                  "Admin Rumah Sakit Umum",
+                  style: TextStyle(color: Colors.black54),
+                ),
+                currentAccountPicture: CircleAvatar(
+                  backgroundColor: Colors.white,
+                  child: ClipOval(
+                    child: Image.network(
+                      'https://i.pravatar.cc/150?img=1',
+                      width: 60,
+                      height: 60,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.teal.shade100,
+                ),
+              ),
+            ),
+            const Divider(height: 1, thickness: 1, color: Colors.grey),
+            const SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Menu Utama',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    leading: const Icon(Icons.people, color: Colors.teal),
+                    title: const Text(
+                      'Daftar Pasien',
+                      style: TextStyle(
+                        color: Colors.black87,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                const PatientListScreen()),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+            const Spacer(),
+            const Divider(height: 1, thickness: 1, color: Colors.grey),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Text(
+                'Versi 1.0.0',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.grey.shade600,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ],
+        ),
       ),
       body: Center(
         child: Padding(
@@ -83,7 +164,9 @@ class HomeScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const PatientListScreen()),
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const PatientListScreen()),
                     );
                   },
                   child: const Row(

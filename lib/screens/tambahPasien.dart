@@ -25,7 +25,7 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
   @override
   void initState() {
     super.initState();
-    _avatarId = _random.nextInt(70) + 1; // Generate random ID 1-70
+    _avatarId = _random.nextInt(70) + 1; 
   }
 
   Future<void> _selectDate(BuildContext context) async {
@@ -56,7 +56,7 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
 
   void _refreshAvatar() {
     setState(() {
-      _avatarId = _random.nextInt(70) + 1; // New random ID 1-70
+      _avatarId = _random.nextInt(70) + 1; 
     });
   }
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pasien/providers/pasienProvider.dart';
 import 'package:pasien/screens/home.dart';
+import 'package:pasien/screens/listPasien.dart';
 import 'package:pasien/database/db.dart';
 
 void main() async {
@@ -36,8 +37,12 @@ class MyApp extends StatelessWidget {
             backgroundColor: Colors.blue,
           ),
         ),
-        home: HomeScreen(),
+        home: const HomeScreen(),
         debugShowCheckedModeBanner: false,
+        routes: {
+          '/home': (context) => const HomeScreen(),
+          '/patients': (context) => const PatientListScreen(),
+        },
       ),
     );
   }
